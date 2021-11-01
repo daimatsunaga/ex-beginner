@@ -5,9 +5,6 @@
 <title>タイトル</title>
 </head>
 <body>
-	<form th:action="@{/exam01/put-name}" method="post">
-		名前：<input type="text" name="name"><br>
-		<button>送信</button>
-	</form>
+	名前：<span th:text="${name}"></span>
 </body>
 </html>
