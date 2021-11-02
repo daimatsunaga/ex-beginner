@@ -1,6 +1,6 @@
 package com.example.form;
 
-public class UseForm {
+public class UserForm {
 	
 	private String name;
 	private String age;
@@ -31,5 +31,4 @@ public class UseForm {
 	public String toString() {
 		return "infoForm [name=" + name + ", age=" + age + ", comment=" + comment + "]";
 	}
-	
 }
