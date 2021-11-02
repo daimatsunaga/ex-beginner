@@ -1,6 +1,6 @@
 package com.example.form;
 
-public class infoForm {
+public class UseForm {
 	
 	private String name;
 	private String age;
