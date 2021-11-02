@@ -7,8 +7,11 @@
 <body>
 	<h1>ユーザ登録</h1>
 	<form th:action="@{/exam04/set-info}" method="post">
+		<div th:errors="${userForm.name}" style="color:red">エラー！</div>
 		名前：<input type="text" name="name"><br>
+		<div th:errors="${userForm.age}" style="color:red">エラー！</div>
 		年齢：<input type="text" name="age"><br>
+		<div th:errors="${userForm.comment}" style="color:red">エラー！</div>
 		コメント：<br>
 		<textarea rows="5" cols="30" name="comment"></textarea><br>
 		<button>登録</button>

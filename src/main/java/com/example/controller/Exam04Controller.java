@@ -3,8 +3,11 @@ package com.example.controller;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.domain.User;
 import com.example.form.UserForm;
@@ -19,15 +22,25 @@ public class Exam04Controller {
 	}
 	
 	@RequestMapping("")
-	public String index() {
+	public String index(Model model) {
 		return "exam04";
 	}
 	
 	@RequestMapping("/set-info")
-	public String setInfo(UserForm form, Model model) {
+	public String setInfo(@Validated UserForm form, BindingResult result, RedirectAttributes redirectAttributes, Model model) {
+		
+		if(result.hasErrors()) {
+			return index(model);
+		}
+		
 		User user = new User();
 		BeanUtils.copyProperties(form, user);
-		model.addAttribute(user);
-		return "exam04-result";
+		redirectAttributes.addFlashAttribute("user", user);
+		return "redirect:/exam04/to-result";
 	}
+	
+	@RequestMapping("/to-result")
+	public String toResult() {
+		return "exam04-result";
+	} 
 }
