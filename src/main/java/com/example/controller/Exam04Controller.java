@@ -2,7 +2,6 @@ package com.example.controller;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -22,15 +21,15 @@ public class Exam04Controller {
 	}
 	
 	@RequestMapping("")
-	public String index(Model model) {
+	public String index() {
 		return "exam04";
 	}
 	
 	@RequestMapping("/set-info")
-	public String setInfo(@Validated UserForm form, BindingResult result, RedirectAttributes redirectAttributes, Model model) {
+	public String setInfo(@Validated UserForm form, BindingResult result, RedirectAttributes redirectAttributes) {
 		
 		if(result.hasErrors()) {
-			return index(model);
+			return index();
 		}
 		
 		User user = new User();
